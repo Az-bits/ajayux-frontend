@@ -13,21 +13,21 @@ const AppLayout = ({ children, classNames, ...rest }) => {
 
   return (
     <Fragment>
-      <Loader />
+      {/* <Loader /> */}
       <Taptop />
-      <div className="page-wrapper compact-wrapper" id="pageWrapper">
+      <div className="page-wrapper compact-wcrapper" id="pageWrapper">
         <Header />
-        <div className="page-body-wrapper">
-          <Sidebar />
-          <div className="page-body">
-            <div>
-              <Outlet />
+          <div className="page-body-wrapper">
+            <Sidebar />
+            <div className="page-body">
+              <div>
+                <Outlet />
+              </div>
             </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
       </div>
-      <ThemeCustomize />
+      {/* <ThemeCustomize /> */}
       <ToastContainer />
     </Fragment>
   );
