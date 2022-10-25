@@ -2,9 +2,10 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { routes } from './Routes';
 import AppLayout from '../components/layout';
-// import HomeLayout from '../frondend/components/layout';
-import HomeLayout from '../frontend/components/layout';
+import Default from '../frontend/components/dashboard/default';
 
+import HomeLayout from '../frontend/components/layout';
+import Muro from '../frontend/components/dashboard/muro';
 const LayoutRoutes = () => {
 	return (
 		<>
@@ -14,9 +15,10 @@ const LayoutRoutes = () => {
 						<Route path={path} element={Component} />
 					</Route>
 				))}
-        <Route element={<HomeLayout />} >
-			      	<Route path='/uta' element={<h1>Uta</h1>} />
-        </Route>
+				<Route element={<HomeLayout />}>
+					<Route path='/uta' element={<Default />} />
+					<Route path='/muro/:id' element={<Muro />} />
+				</Route>
 			</Routes>
 		</>
 	);
