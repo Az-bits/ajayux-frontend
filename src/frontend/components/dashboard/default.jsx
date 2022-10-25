@@ -286,75 +286,60 @@ const Default = () => {
 							<Row className='gridRow'>
 								{blessedSoul
 									? blessedSoul.map((item, i) => (
-											<div className={`${layoutColumns === 3 ? 'col-xl-3 col-sm-6 xl-4 col-grid-box' : 'col-xl-' + layoutColumns}`} key={i}>
-												<Card>
-													<div className='product-box'>
-														<div className='product-img'>
-															{/* {item.status === 'sale' ? <span className='ribbon ribbon-danger'>{item.status}</span> : ''}
-															{item.status === '50%' ? <span className='ribbon ribbon-success ribbon-right'>{item.status}</span> : ''}
-															{item.status === 'gift' ? (
-																<span className='ribbon ribbon-secondary ribbon-vertical-left'>
-																	<i className='icon-gift'>{item.status}</i>
-																</span>
-															) : (
-																''
-															)}
-															{item.status === 'love' ? (
-																<span className='ribbon ribbon-bookmark ribbon-vertical-right ribbon-info'>
-																	<i className='icon-heart'>{item.status}</i>
-																</span>
-															) : (
-																''
-															)} */}
-															{/* {item.status === 'Hot' ? <span className='ribbon ribbon ribbon-clip ribbon-warning'>{item.status}</span> : ''} */}
-															<img className='img-fluid' src={item.image} alt='' />
-															<div className='product-hover'>
-																<ul>
-																	{/* <li>
-																		<Link to={`${process.env.PUBLIC_URL}/app/ecommerce/cart/${layout}`}>
-																			<Button color='default' onClick={() => addcart(item, quantity)}>
-																				<i className='icon-shopping-cart'></i>
-																			</Button>
-																		</Link>
-																	</li> */}
-																	<li>
-																		<Button color='default' data-toggle='modal' onClick={() => onOpenModal(item.id)}>
-																			<i className='icon-eye'></i>
+										<div className={`${layoutColumns === 3 ? 'col-xl-3 col-sm-6 xl-4 col-grid-box' : 'col-xl-' + layoutColumns}`} key={i}>
+											<Card>
+												<div className='product-box'>
+													<div className='product-img'>
+														{item.status === '1 dias' ? <span className='ribbon ribbon-danger'>1 dias</span> : ''}
+														{item.status === '2 dias' ? <span className='ribbon ribbon-danger'>2 dias</span> : ''}
+														{item.status === '3 dias' ? <span className='ribbon ribbon-danger'>3 dias</span> : ''}
+														{item.status === '50%' ? <span className='ribbon ribbon-success ribbon-right'>{item.status}</span> : ''}
+														{item.status === 'gift' ? (
+															<span className='ribbon ribbon-secondary ribbon-vertical-left'>
+																<i className='icon-gift'>{item.status}</i>
+															</span>
+														) : (
+															''
+														)}
+														{item.status === '4 dias' ? (
+															<span className='ribbon ribbon-bookmark ribbon-vertical-right ribbon-info'>
+																<i className='icon-heart'>{item.status}</i>
+															</span>
+														) : (
+															''
+														)}
+														{item.status === 'Hot' ? <span className='ribbon ribbon ribbon-clip ribbon-warning'>{item.status}</span> : ''}
+														<img className='img-fluid img-thumbnail mx-auto d-block' src={item.image} alt='' />
+														<div className='product-hover'>
+															<ul>
+																<li>
+																	<Button color='default' data-toggle='modal' onClick={() => onOpenModal(item.id)}>
+																		<i className='icon-eye'></i>
+																	</Button>
+																</li>
+																<li>
+																	<Link to={`${process.env.PUBLIC_URL}/app/ecommerce/wishlist/${layout}`}>
+																		<Button color='default' onClick={() => addWishList(item)}>
+																			<i className='icon-heart'></i>
 																		</Button>
-																	</li>
-																	<li>
-																		<Link to={`${process.env.PUBLIC_URL}/app/ecommerce/wishlist/${layout}`}>
-																			<Button color='default' onClick={() => addWishList(item)}>
-																				<i className='icon-heart'></i>
-																			</Button>
-																		</Link>
-																	</li>
-																</ul>
-															</div>
-														</div>
-														<div className='product-details'>
-															<div className='rating'>
-																<i className='fa fa-star'></i>
-																<i className='fa fa-star'></i>
-																<i className='fa fa-star'></i>
-																<i className='fa fa-star'></i>
-																<i className='fa fa-star'></i>
-															</div>
-															<h4 onClick={() => onClickDetailPage(item)} className='font-primary'>
-																{item.name}
-															</h4>
-															<p>{item.note}</p>
-															<div className='product-price'>
-																{symbol} {item.price}
-																<del>
-																	{symbol} {item.discountPrice}
-																</del>
-															</div>
+																	</Link>
+																</li>
+															</ul>
 														</div>
 													</div>
-												</Card>
-											</div>
-									  ))
+													<div className='product-details'>
+														<h4 onClick={() => onClickDetailPage(item)} className='font-primary'>{item.name}</h4>
+														<br />
+														<p>{item.note}</p>
+														<hr />
+														<div className="greeting-user text-center">
+															<div className="whatsnew-btn"><a className="btn btn-primary" href="#javascript">{"Visitar"}</a></div>
+														</div>
+													</div>
+												</div>
+											</Card>
+										</div>
+									))
 									: ''}
 
 								<Modal className='modal-lg modal-dialog-centered product-modal' isOpen={open}>
@@ -426,8 +411,8 @@ const Default = () => {
 						)}
 					</div>
 				</div>
-			</Container>
-		</Fragment>
+			</Container >
+		</Fragment >
 	);
 };
 
