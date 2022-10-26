@@ -15,7 +15,7 @@ import { Dashboard, Summary, NewsUpdate, Appointment, Notification, MarketValue,
  */
 
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Row, Col, Card, CardHeader, CardBody, Button, ListGroup, Form, Input, Media, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText } from 'reactstrap';
+import { Container, Row, Col, Card, CardHeader, CardFooter, CardBody, Button, ListGroup, Form, Input, Media, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText } from 'reactstrap';
 import { SEARCH_BY, SORT_BY, ADD_TO_CART, ADD_TO_WISHLIST } from '../../../redux/actionTypes';
 import { Grid, List } from 'react-feather';
 import { Link, useNavigate } from 'react-router-dom';
@@ -27,6 +27,8 @@ import { watchfetchProducts } from '../../../redux/ecommerce/product/action';
 import { Filters, ShowingProducts, Featured, LowestPrices, HighestPrices, NotFoundData, ProductDetails, Quantity, AddToCart, ViewDetails, ProductSizeArray } from '../../../constant';
 import { classes } from '../../../data/layouts';
 import { dataBlessedSoul } from '../../data/blessedSoul';
+import { Follower, Following, TotalPost } from '../../constant';
+import axios from 'axios';
 
 const Default = () => {
 	const [daytimes, setDayTimes] = useState();
@@ -61,15 +63,21 @@ const Default = () => {
 
 	/**
 	 * my
-	 */ const [blessedSoul, setBlessedSoul] = useState([]);
+	 */ const [ser_queridos, set_ser_queridos] = useState([]);
 
 	/**
 	 *
 	 */
+	// useEffect(() => {
+	// 	dispatch(watchfetchProducts());
+	// 	setBlessedSoul(dataBlessedSoul);
+	// }, [dispatch]);
+
 	useEffect(() => {
-		dispatch(watchfetchProducts());
-		setBlessedSoul(dataBlessedSoul);
-	}, [dispatch]);
+		axios.get(`${process.env.PUBLIC_URL}/myapi/ser_queridos.json`).then((res) => set_ser_queridos(res.data));
+	}, []);
+
+	// console.log(ser_queridos);
 
 	const filterSortFunc = (event) => {
 		dispatch({ type: SORT_BY, sort_by: event });
@@ -163,7 +171,6 @@ const Default = () => {
 		const id = product.id;
 		history(`${process.env.PUBLIC_URL}/app/ecommerce/product-page/${layout}/${id}`);
 	};
-	console.log(blessedSoul);
 
 	return (
 		<Fragment>
@@ -284,62 +291,72 @@ const Default = () => {
 							</div>
 						) : (
 							<Row className='gridRow'>
-								{blessedSoul
-									? blessedSoul.map((item, i) => (
-										<div className={`${layoutColumns === 3 ? 'col-xl-3 col-sm-6 xl-4 col-grid-box' : 'col-xl-' + layoutColumns}`} key={i}>
-											<Card>
-												<div className='product-box'>
-													<div className='product-img'>
-														{item.status === '1 dias' ? <span className='ribbon ribbon-danger'>1 dias</span> : ''}
-														{item.status === '2 dias' ? <span className='ribbon ribbon-danger'>2 dias</span> : ''}
-														{item.status === '3 dias' ? <span className='ribbon ribbon-danger'>3 dias</span> : ''}
-														{item.status === '50%' ? <span className='ribbon ribbon-success ribbon-right'>{item.status}</span> : ''}
-														{item.status === 'gift' ? (
-															<span className='ribbon ribbon-secondary ribbon-vertical-left'>
-																<i className='icon-gift'>{item.status}</i>
-															</span>
-														) : (
-															''
-														)}
-														{item.status === '4 dias' ? (
-															<span className='ribbon ribbon-bookmark ribbon-vertical-right ribbon-info'>
-																<i className='icon-heart'>{item.status}</i>
-															</span>
-														) : (
-															''
-														)}
-														{item.status === 'Hot' ? <span className='ribbon ribbon ribbon-clip ribbon-warning'>{item.status}</span> : ''}
-														<img className='img-fluid img-thumbnail mx-auto d-block' src={item.image} alt='' />
-														<div className='product-hover'>
-															<ul>
-																<li>
-																	<Button color='default' data-toggle='modal' onClick={() => onOpenModal(item.id)}>
-																		<i className='icon-eye'></i>
-																	</Button>
-																</li>
-																<li>
-																	<Link to={`${process.env.PUBLIC_URL}/app/ecommerce/wishlist/${layout}`}>
-																		<Button color='default' onClick={() => addWishList(item)}>
-																			<i className='icon-heart'></i>
-																		</Button>
-																	</Link>
-																</li>
-															</ul>
-														</div>
+								{ser_queridos
+									? ser_queridos.map((item, i) => (
+											<Col md='6' lg='6' xl='4' className='box-col-6' key={i}>
+												<Card className='custom-card'>
+													<CardHeader>
+														<Media body className='img-fluid' src={require('../../assets/img/1.jpg')} alt='' />
+													</CardHeader>
+													<div className='card-profile'>
+														<Media body className='rounded-circle' src={item.image} alt='' />
 													</div>
-													<div className='product-details'>
-														<h4 onClick={() => onClickDetailPage(item)} className='font-primary'>{item.name}</h4>
-														<br />
-														<p>{item.note}</p>
-														<hr />
-														<div className="greeting-user text-center">
-															<div className="whatsnew-btn"><a className="btn btn-primary" href="#javascript">{"Visitar"}</a></div>
-														</div>
+													<ul className='card-social'>
+														<li>
+															<a href='https://www.facebook.com/'>
+																<i className='fa fa-facebook'></i>
+															</a>
+														</li>
+														<li>
+															<a href='https://accounts.google.com/'>
+																<i className='fa fa-google-plus'></i>
+															</a>
+														</li>
+														<li>
+															<a href='https://twitter.com/'>
+																<i className='fa fa-twitter'></i>
+															</a>
+														</li>
+														<li>
+															<a href='https://www.instagram.com/'>
+																<i className='fa fa-instagram'></i>
+															</a>
+														</li>
+														<li>
+															<a href='https://dashboard.rss.com/auth/sign-in/'>
+																<i className='fa fa-rss'></i>
+															</a>
+														</li>
+													</ul>
+													<div className='text-center profile-details'>
+														<Link to={`${process.env.PUBLIC_URL}/app/users/userProfile/${layout}`}>
+															<h4>{item.name}</h4>
+														</Link>
+														<h6>{item.description}</h6>
 													</div>
-												</div>
-											</Card>
-										</div>
-									))
+													<CardFooter className='row'>
+														<Col sm='4 col-4'>
+															<h6>{Follower}</h6>
+															<h3 className='counter'>{item.follower}</h3>
+														</Col>
+														<Col sm='4 col-4'>
+															<h6>{Following}</h6>
+															<h3>
+																<span className='counter'>{item.following}</span>
+																{'K'}
+															</h3>
+														</Col>
+														<Col sm='4 col-4'>
+															<h6>{TotalPost}</h6>
+															<h3>
+																{/* <span className='counter'>{cardItem.totalPost}</span> */}
+																{'M'}
+															</h3>
+														</Col>
+													</CardFooter>
+												</Card>
+											</Col>
+									  ))
 									: ''}
 
 								<Modal className='modal-lg modal-dialog-centered product-modal' isOpen={open}>
@@ -411,8 +428,8 @@ const Default = () => {
 						)}
 					</div>
 				</div>
-			</Container >
-		</Fragment >
+			</Container>
+		</Fragment>
 	);
 };
 
