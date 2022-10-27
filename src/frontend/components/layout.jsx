@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import Loader from "../layout/loader";
+// import Loader from "../layout/loader";
 import Taptop from "../layout/tap-top";
 import Header from '../layout/header'
-import Sidebar from '../layout/sidebar'
+// import Sidebar from '../layout/sidebar'
 import Footer from '../layout/footer'
-import ThemeCustomize from "../layout/theme-customizer";
+// import ThemeCustomize from "../layout/theme-customizer";
 import { ToastContainer } from 'react-toastify'
 import { Outlet } from 'react-router-dom';
 

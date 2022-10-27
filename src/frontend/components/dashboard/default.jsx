@@ -1,32 +1,34 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import Breadcrumb from '../../layout/breadcrumb';
+// import Breadcrumb from '../../layout/breadcrumb';
 // import { Container, Row, Col, Card, CardHeader, CardBody } from 'reactstrap';
-import DatePicker from 'react-datepicker';
-import ApexCharts from 'react-apexcharts';
-import Knob from 'knob';
-import ChartistChart from 'react-chartist';
-import { smallchart1data, smallchart1option, smallchart2data, smallchart2option, smallchart3data, smallchart3option, smallchart4data, smallchart4option } from './chartsData/chartist-charts-data';
-import { Currentlysale, Marketvalue } from './chartsData/apex-charts-data';
-import { Send, Clock } from 'react-feather';
-import { Dashboard, Summary, NewsUpdate, Appointment, Notification, MarketValue, Chat, New, Tomorrow, Yesterday, Daily, Weekly, Monthly, Store, Online, ReferralEarning, CashBalance, SalesForcasting, Purchase, Sales, SalesReturn, PurchaseRet, PurchaseOrderValue, ProductOrderValue, Pending, Yearly, Hot, Today, VenterLoren, Done, JohnLoren, Year, Month, Day, RightNow } from '../../constant';
+// import DatePicker from 'react-datepicker';
+// import ApexCharts from 'react-apexcharts';
+// import Knob from 'knob';
+// import ChartistChart from 'react-chartist';
+// import { smallchart1data, smallchart1option, smallchart2data, smallchart2option, smallchart3data, smallchart3option, smallchart4data, smallchart4option } from './chartsData/chartist-charts-data';
+// import { Currentlysale, Marketvalue } from './chartsData/apex-charts-data';
+// import { Send, Clock } from 'react-feather';
+// import { Dashboard, Summary, NewsUpdate, Appointment, Notification, MarketValue, Chat, New, Tomorrow, Yesterday, Daily, Weekly, Monthly, Store, Online, ReferralEarning, CashBalance, SalesForcasting, Purchase, Sales, SalesReturn, PurchaseRet, PurchaseOrderValue, ProductOrderValue, Pending, Yearly, Hot, Today, VenterLoren, Done, JohnLoren, Year, Month, Day, RightNow } from '../../constant';
 
 /**
  *
  */
 
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Row, Col, Card, CardHeader, CardFooter, CardBody, Button, ListGroup, Form, Input, Media, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText } from 'reactstrap';
+// import { Container, Row, Col, Card, CardHeader, CardFooter, CardBody, Button, ListGroup, Form, Input, Media, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText } from 'reactstrap';
+import { Container, Row, Col, Card, CardHeader, CardFooter, Button, Form, Input, Media, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText } from 'reactstrap';
 import { SEARCH_BY, SORT_BY, ADD_TO_CART, ADD_TO_WISHLIST } from '../../../redux/actionTypes';
-import { Grid, List } from 'react-feather';
+// import { Grid, List } from 'react-feather';
 import { Link, useNavigate } from 'react-router-dom';
 import errorImg from '../../../assets/images/search-not-found.png';
-import Allfilters from '../../../components/application/ecommerce-app/filters/allfilters';
-import Carousal from '../../../components/application/ecommerce-app/filters/carousal';
+// import Allfilters from '../../../components/application/ecommerce-app/filters/allfilters';
+// import Carousal from '../../../components/application/ecommerce-app/filters/carousal';
 import { getVisibleproducts } from '../../../services/ecommerce.service';
-import { watchfetchProducts } from '../../../redux/ecommerce/product/action';
-import { Filters, ShowingProducts, Featured, LowestPrices, HighestPrices, NotFoundData, ProductDetails, Quantity, AddToCart, ViewDetails, ProductSizeArray } from '../../../constant';
+// import { watchfetchProducts } from '../../../redux/ecommerce/product/action';
+// import { Filters, ShowingProducts, Featured, LowestPrices, HighestPrices, NotFoundData, ProductDetails, Quantity, AddToCart, ViewDetails, ProductSizeArray } from '../../../constant';
+import { NotFoundData, ProductDetails, Quantity, AddToCart, ViewDetails, ProductSizeArray } from '../../../constant';
 import { classes } from '../../../data/layouts';
-import { dataBlessedSoul } from '../../data/blessedSoul';
+// import { dataBlessedSoul } from '../../data/blessedSoul';
 import { Follower, Following, TotalPost } from '../../constant';
 import axios from 'axios';
 
@@ -293,70 +295,70 @@ const Default = () => {
 							<Row className='gridRow'>
 								{ser_queridos
 									? ser_queridos.map((item, i) => (
-											<Col md='6' lg='6' xl='4' className='box-col-6' key={i}>
-												<Card className='custom-card'>
-													<CardHeader>
-														<Media body className='img-fluid' src={require('../../assets/img/1.jpg')} alt='' />
-													</CardHeader>
-													<div className='card-profile'>
-														<Media body className='rounded-circle' src={item.image} alt='' />
-													</div>
-													<ul className='card-social'>
-														<li>
-															<a href='https://www.facebook.com/'>
-																<i className='fa fa-facebook'></i>
-															</a>
-														</li>
-														<li>
-															<a href='https://accounts.google.com/'>
-																<i className='fa fa-google-plus'></i>
-															</a>
-														</li>
-														<li>
-															<a href='https://twitter.com/'>
-																<i className='fa fa-twitter'></i>
-															</a>
-														</li>
-														<li>
-															<a href='https://www.instagram.com/'>
-																<i className='fa fa-instagram'></i>
-															</a>
-														</li>
-														<li>
-															<a href='https://dashboard.rss.com/auth/sign-in/'>
-																<i className='fa fa-rss'></i>
-															</a>
-														</li>
-													</ul>
-													<div className='text-center profile-details'>
-														<Link to={`${process.env.PUBLIC_URL}/app/users/userProfile/${layout}`}>
-															<h4>{item.name}</h4>
-														</Link>
-														<h6>{item.description}</h6>
-													</div>
-													<CardFooter className='row'>
-														<Col sm='4 col-4'>
-															<h6>{Follower}</h6>
-															<h3 className='counter'>{item.follower}</h3>
-														</Col>
-														<Col sm='4 col-4'>
-															<h6>{Following}</h6>
-															<h3>
-																<span className='counter'>{item.following}</span>
-																{'K'}
-															</h3>
-														</Col>
-														<Col sm='4 col-4'>
-															<h6>{TotalPost}</h6>
-															<h3>
-																{/* <span className='counter'>{cardItem.totalPost}</span> */}
-																{'M'}
-															</h3>
-														</Col>
-													</CardFooter>
-												</Card>
-											</Col>
-									  ))
+										<Col md='6' lg='6' xl='4' className='box-col-6' key={i}>
+											<Card className='custom-card'>
+												<CardHeader>
+													<Media body className='img-fluid' src={require('../../assets/img/1.jpg')} alt='' />
+												</CardHeader>
+												<div className='card-profile'>
+													<Media body className='rounded-circle' src={item.image} alt='' />
+												</div>
+												<ul className='card-social'>
+													<li>
+														<a href='https://www.facebook.com/'>
+															<i className='fa fa-facebook'></i>
+														</a>
+													</li>
+													<li>
+														<a href='https://accounts.google.com/'>
+															<i className='fa fa-google-plus'></i>
+														</a>
+													</li>
+													<li>
+														<a href='https://twitter.com/'>
+															<i className='fa fa-twitter'></i>
+														</a>
+													</li>
+													<li>
+														<a href='https://www.instagram.com/'>
+															<i className='fa fa-instagram'></i>
+														</a>
+													</li>
+													<li>
+														<a href='https://dashboard.rss.com/auth/sign-in/'>
+															<i className='fa fa-rss'></i>
+														</a>
+													</li>
+												</ul>
+												<div className='text-center profile-details'>
+													<Link to={`${process.env.PUBLIC_URL}/app/users/userProfile/${layout}`}>
+														<h4>{item.name}</h4>
+													</Link>
+													<h6>{item.description}</h6>
+												</div>
+												<CardFooter className='row'>
+													<Col sm='4 col-4'>
+														<h6>{Follower}</h6>
+														<h3 className='counter'>{item.follower}</h3>
+													</Col>
+													<Col sm='4 col-4'>
+														<h6>{Following}</h6>
+														<h3>
+															<span className='counter'>{item.following}</span>
+															{'K'}
+														</h3>
+													</Col>
+													<Col sm='4 col-4'>
+														<h6>{TotalPost}</h6>
+														<h3>
+															{/* <span className='counter'>{cardItem.totalPost}</span> */}
+															{'M'}
+														</h3>
+													</Col>
+												</CardFooter>
+											</Card>
+										</Col>
+									))
 									: ''}
 
 								<Modal className='modal-lg modal-dialog-centered product-modal' isOpen={open}>

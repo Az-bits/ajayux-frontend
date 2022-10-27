@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
-import Breadcrumb from '../../layout/breadcrumb';
-import { Container, Row, Col, Card, CardHeader, Media, CardImg } from 'reactstrap';
+// import Breadcrumb from '../../layout/breadcrumb';
+// import { Container, Row, Col, Card, CardHeader, Media, CardImg } from 'reactstrap';
+import { Row, Col, Card, Media, CardImg } from 'reactstrap';
 import { Email, MarekjecnoMailId, BOD, DDMMYY, Designer, ContactUs, ContactUsNumber, LocationDetails, JOHANDIO, UserProfileDesc1, UserProfileDesc2, UserProfileDesc3, Comment, MarkJecno, Like, Follower, Following, Location } from '../../constant';
 
 const Muro = () => {
@@ -167,7 +168,7 @@ const Muro = () => {
 												<a href='#javascript'>
 													<i className='fa fa-heart'></i>
 												</a>
-												  {Like}
+												{Like}
 											</label>
 											<span className='ms-2 counter'>{'2659'}</span>
 										</li>
@@ -176,7 +177,7 @@ const Muro = () => {
 												<a href='#javascript'>
 													<i className='fa fa-comment'></i>
 												</a>
-												  {Comment}
+												{Comment}
 											</label>
 											<span className='ms-2 counter'>{'569'}</span>
 										</li>
@@ -220,7 +221,7 @@ const Muro = () => {
 												<a href='#javascript'>
 													<i className='fa fa-heart'></i>
 												</a>
-												  {Like}
+												{Like}
 											</label>
 											<span className='ms-2 counter'>{'2659'}</span>
 										</li>
@@ -229,7 +230,7 @@ const Muro = () => {
 												<a href='#javascript'>
 													<i className='fa fa-comment'></i>
 												</a>
-												  {Comment}
+												{Comment}
 											</label>
 											<span className='ms-2 counter'>{'569'}</span>
 										</li>
@@ -266,7 +267,7 @@ const Muro = () => {
 												<a href='#javascript'>
 													<i className='fa fa-heart'></i>
 												</a>
-												  {Like}
+												{Like}
 											</label>
 											<span className='ms-2 counter'>{'2659'}</span>
 										</li>
@@ -275,7 +276,7 @@ const Muro = () => {
 												<a href='#javascript'>
 													<i className='fa fa-comment'></i>
 												</a>
-												  {Comment}
+												{Comment}
 											</label>
 											<span className='ms-2 counter'>{'569'}</span>
 										</li>
@@ -318,7 +319,7 @@ const Muro = () => {
 														<a href='#javascript'>
 															<i className='fa fa-heart'></i>
 														</a>
-														  {Like}
+														{Like}
 													</label>
 													<span className='ms-2 counter'>{'2659'}</span>
 												</li>
@@ -327,7 +328,7 @@ const Muro = () => {
 														<a href='#javascript'>
 															<i className='fa fa-comment'></i>
 														</a>
-														  {Comment}
+														{Comment}
 													</label>
 													<span className='ms-2 counter'>{'569'}</span>
 												</li>
