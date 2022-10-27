@@ -92,7 +92,7 @@ const Logins = (props) => {
                           </Button>
                         </div>
                       </div>
-                      <p className="mt-4 mb-0">{"Don't have account?"}<a className="ms-2" href="#javascript">{CreateAccount}</a></p>
+                      <p className="mt-4 mb-0">{"Don't have account?"}<a className="ms-2" href={""}>{CreateAccount}</a></p>
                     </Form>
                   </TabPane>
                   <TabPane className="fade show" tabId="auth0">

@@ -116,7 +116,7 @@ const Logins = (props) => {
                           </Button>
                         </div>
                       </div>
-                      <p className="mt-4 mb-0">{"¿No tienes cuenta?"}<a className="ms-2" href="#javascript">{CreateAccount}</a></p>
+                      <p className="mt-4 mb-0">{"¿No tienes cuenta?"}<a className="ms-2" href={`${process.env.PUBLIC_URL}/pages/auth/signup`}>{CreateAccount}</a></p>
                     </Form>
                   </TabPane>
                   <TabPane className="fade show" tabId="auth0">
