@@ -16,8 +16,8 @@ import { classes } from '../data/layouts';
 const Logins = (props) => {
 
   const { loginWithRedirect } = useAuth0()
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("adalidalanoca2029@gmail.com");
+  const [password, setPassword] = useState("Tecem001+");
   const [loading, setLoading] = useState(false)
   const [selected, setSelected] = useState("jwt");
   const [togglePassword, setTogglePassword] = useState(false);
@@ -58,18 +58,18 @@ const Logins = (props) => {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: ({ email, password })
+      body: JSON.stringify({ email, password })
     };
 
-    return fetch('/users/authenticate', requestOptions)
-      .then(handleResponse)
+    return fetch('http://localhost:8080/login', requestOptions)
+      // .then(handleResponse)
       .then(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         setValue(man);
         setName('Emay Walter');
-        localStorage.setItem('token', Jwt_token);
-        window.location.href = `${process.env.PUBLIC_URL}/dashboard/default/${layout}`;
-        return user;
+        // localStorage.setItem('token', Jwt_token);
+        // window.location.href = `${process.env.PUBLIC_URL}/dashboard/default/${layout}`;
+        // return user;
       });
   };
 
@@ -116,7 +116,7 @@ const Logins = (props) => {
                           </Button>
                         </div>
                       </div>
-                      <p className="mt-4 mb-0">{"¿No tienes cuenta?"}<a className="ms-2" href={`${process.env.PUBLIC_URL}/pages/auth/signup`}>{CreateAccount}</a></p>
+                      <p className="mt-4 mb-0">{"¿No tienes cuenta?"}<a className="ms-2" href="#javascript">{CreateAccount}</a></p>
                     </Form>
                   </TabPane>
                   <TabPane className="fade show" tabId="auth0">
