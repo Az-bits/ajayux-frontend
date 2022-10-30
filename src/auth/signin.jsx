@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import man from '../assets/images/dashboard/profile.jpg';
 import { Container, Row, Col, Form, Input, Label, Button, NavItem, NavLink, Nav, TabContent, TabPane } from 'reactstrap'
 import { firebase_app, googleProvider, facebookProvider, githubProvider, Jwt_token } from '../data/config'
-import { handleResponse } from '../services/fack.backend'
+// import { handleResponse } from '../services/fack.backend'
 import { useAuth0 } from '@auth0/auth0-react'
 import { toast } from 'react-toastify';
 import { Facebook, GitHub } from 'react-feather'
@@ -61,16 +61,21 @@ const Logins = (props) => {
       body: JSON.stringify({ email, password })
     };
 
-    return fetch('http://localhost:8080/login', requestOptions)
-      // .then(handleResponse)
-      .then(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        setValue(man);
-        setName('Emay Walter');
-        // localStorage.setItem('token', Jwt_token);
-        // window.location.href = `${process.env.PUBLIC_URL}/dashboard/default/${layout}`;
-        // return user;
-      });
+    return new Promise((resolve, reject) => {
+      fetch('http://localhost:8080/login', requestOptions)
+
+    })
+    // return fetch('http://localhost:8080/login', requestOptions)
+    //   // .then(handleResponse)
+    //   .then(user => {
+    //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //     console.log(user)
+    //     setValue(man);
+    //     setName('Emay Walter');
+    //     // localStorage.setItem('token', Jwt_token);
+    //     // window.location.href = `${process.env.PUBLIC_URL}/dashboard/default/${layout}`;
+    //     // return user;
+    //   });
   };
 
   return (

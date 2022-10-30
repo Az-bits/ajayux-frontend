@@ -1,46 +1,47 @@
 import { Jwt_token } from '../data/config'
 export const configureFakeBackend = () => {
     let users = [{ email: 'test@gmail.com', password: 'test123' }];
-    let realFetch = window.fetch;
-    window.fetch = function (url, opts) {
-        const isLoggedIn = opts.headers['Authorization'] === `Bearer ${Jwt_token}`;
-        return new Promise((resolve, reject) => {
-            // wrap in timeout to simulate server api call
-            setTimeout(() => {
-                // authenticate - public
-                if (url.endsWith('/users/authenticate') && opts.method === 'POST') {
-                    const params = opts.body;
-                    const user = users.find(x => x.email === params.email && x.password === params.password);
-                    if (!user) return error('Username or password is incorrect');
-                    return ok(Jwt_token);
-                }
+    // let realFetch = window.fetch;
+    // window.fetch = function (url, opts) {
+    //     const isLoggedIn = opts.headers['Authorization'] === `Bearer ${Jwt_token}`;
+    //     return new Promise((resolve, reject) => {
+    //         // wrap in timeout to simulate server api call
+    //         setTimeout(() => {
+    //             // authenticate - public
+    //             if (url.endsWith('/users/authenticate') && opts.method === 'POST') {
+    //                 const params = opts.body;
+    //                 const user = users.find(x => x.email === params.email && x.password === params.password);
+    //                 if (!user) return error('Username or password is incorrect');
+    //                 return ok(Jwt_token);
+    //             }
 
-                // get users - secure
-                if (url.endsWith('/users') && opts.method === 'GET') {
-                    if (!isLoggedIn) return unauthorised();
-                    return ok(users);
-                }
+    //             // get users - secure
+    //             if (url.endsWith('/users') && opts.method === 'GET') {
+    //                 if (!isLoggedIn) return unauthorised();
+    //                 return ok(users);
+    //             }
 
-                // pass through any requests not handled above
-                realFetch(url, opts).then(response => resolve(response));
+    //             // pass through any requests not handled above
+    //             realFetch(url, opts).then(response => resolve(response));
 
-                // private helper functions
 
-                function ok(body) {
-                    resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) })
-                }
+    //             // private helper functions
 
-                function unauthorised() {
-                    resolve({ status: 401, text: () => Promise.resolve(JSON.stringify({ message: 'Unauthorised' })) })
-                }
+    //             function ok(body) {
+    //                 resolve({ ok: true, text: () => Promise.resolve(JSON.stringify(body)) })
+    //             }
 
-                function error(message) {
+    //             function unauthorised() {
+    //                 resolve({ status: 401, text: () => Promise.resolve(JSON.stringify({ message: 'Unauthorised' })) })
+    //             }
 
-                    resolve({ status: 400, text: () => Promise.resolve(JSON.stringify({ message })) })
-                }
-            }, 500);
-        });
-    }
+    //             function error(message) {
+
+    //                 resolve({ status: 400, text: () => Promise.resolve(JSON.stringify({ message })) })
+    //             }
+    //         }, 500);
+    //     });
+    // }
 }
 
 export function handleResponse(response) {
